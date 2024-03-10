@@ -1,13 +1,13 @@
 import "package:bank_sha_modular/import_all.dart";
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class RegisterUploadPicScreen extends StatefulWidget {
+  const RegisterUploadPicScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RegisterUploadPicScreen> createState() => _RegisterUploadPicScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterUploadPicScreenState extends State<RegisterUploadPicScreen> {
   final registerController = Modular.get<RegisterController>();
 
   @override
@@ -48,28 +48,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomTextField(
-                        label: "Full Name",
-                        controller: registerController.fullNameController,
+                      Container(
+                        padding: const EdgeInsets.all(44),
+                        decoration: ShapeDecoration(
+                          shape: const CircleBorder(),
+                          color: AppColor(AppColor.colorWhiteBone)
+                        ),
+                        child: Center(
+                          child: SvgPicture.asset(
+                            "assets/icons/ic-upload.svg",
+                            width: 32,
+                            colorFilter: ColorFilter.mode(AppColor(AppColor.colorGrey), BlendMode.srcIn),
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 16),
-                      CustomTextField(
-                        label: "Email Address",
-                        controller: registerController.emailController,
-                        keyboardType: TextInputType.emailAddress,
-                      ),
-                      const SizedBox(height: 16),
-                      CustomTextField(
-                        label: "Password",
-                        controller: registerController.passwordController,
-                        obscureText: true,
+                      Center(
+                        child: Text(
+                          "Iki Ramadhan",
+                          style: AppStyle.darkText.copyWith(fontSize: 18, fontWeight: FontWeight.w500),
+                        ),
                       ),
                       const SizedBox(height: 30),
+                      CustomTextField(
+                        label: "Set PIN (6 digit number)",
+                        controller: registerController.pinController,
+                        obscureText: true,
+                        keyboardType: TextInputType.number,
+                      ),
+                      const SizedBox(height: 50),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Modular.to.pushNamed("/auth/register/upload-pic");
+                            Modular.to.pushNamed("/auth/register/upload-id");
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -99,21 +111,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 50),
-                Center(
-                  child: InkWell(
-                    onTap: () {},
-                    child: Text(
-                      "Sign In",
-                      textAlign: TextAlign.center,
-                      style: AppStyle.greyText.copyWith(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 50),
               ],
             ),
           )

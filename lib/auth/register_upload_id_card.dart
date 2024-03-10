@@ -1,13 +1,13 @@
 import "package:bank_sha_modular/import_all.dart";
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class RegisterUploadIdCardScreen extends StatefulWidget {
+  const RegisterUploadIdCardScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RegisterUploadIdCardScreen> createState() => _RegisterUploadIdCardScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterUploadIdCardScreenState extends State<RegisterUploadIdCardScreen> {
   final registerController = Modular.get<RegisterController>();
 
   @override
@@ -31,7 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Join Us to Unlock\nYour Growth",
+                  "Verify Your\nAccount",
                   style: AppStyle.darkText.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: 20,
@@ -48,29 +48,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomTextField(
-                        label: "Full Name",
-                        controller: registerController.fullNameController,
+                      Container(
+                        padding: const EdgeInsets.all(44),
+                        decoration: ShapeDecoration(
+                            shape: const CircleBorder(),
+                            color: AppColor(AppColor.colorWhiteBone)
+                        ),
+                        child: Center(
+                          child: SvgPicture.asset(
+                            "assets/icons/ic-upload.svg",
+                            width: 32,
+                            colorFilter: ColorFilter.mode(AppColor(AppColor.colorGrey), BlendMode.srcIn),
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 16),
-                      CustomTextField(
-                        label: "Email Address",
-                        controller: registerController.emailController,
-                        keyboardType: TextInputType.emailAddress,
+                      Center(
+                        child: Text(
+                          "Passport / ID Card",
+                          style: AppStyle.darkText.copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+                        ),
                       ),
-                      const SizedBox(height: 16),
-                      CustomTextField(
-                        label: "Password",
-                        controller: registerController.passwordController,
-                        obscureText: true,
-                      ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 50),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Modular.to.pushNamed("/auth/register/upload-pic");
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
@@ -99,24 +102,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 50),
-                Center(
-                  child: InkWell(
-                    onTap: () {},
-                    child: Text(
-                      "Sign In",
-                      textAlign: TextAlign.center,
-                      style: AppStyle.greyText.copyWith(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 50),
               ],
             ),
-          )
+          ),
+          const SizedBox(height: 50),
+          Center(
+            child: InkWell(
+              onTap: () {},
+              child: Text(
+                "Skip for Now",
+                textAlign: TextAlign.center,
+                style: AppStyle.greyText.copyWith(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 50),
         ],
       ),
     );

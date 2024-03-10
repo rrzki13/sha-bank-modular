@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark">#020518</color>
+</resources>
+
 <!-- Modify this file to customize your launch splash screen -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@android:color/dark" />
@@ -7,6 +11,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/launch_image_dark" />
+            android:src="@mipmap/ic_launcher" />
     </item>
 </layer-list>
