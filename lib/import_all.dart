@@ -1,0 +1,10 @@
+export 'package:flutter/material.dart';
+export 'package:flutter_modular/flutter_modular.dart';
+export 'splash_screen.dart';
+export 'appmodule.dart';
+export 'package:responsive_framework/responsive_framework.dart';
+export "shared/shared.dart";
+export "package:flutter_svg/flutter_svg.dart";
+export 'dart:async';
+export "onboarding/oboarding.dart";
+export "auth/register.dart";
