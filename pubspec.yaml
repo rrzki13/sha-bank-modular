@@ -20,6 +20,7 @@ dependencies:
   responsive_framework: ^1.4.0
   flutter_svg: ^2.0.10+1
   carousel_slider: ^4.2.1
+  flutter_native_splash: ^2.3.11
 
 dev_dependencies:
   flutter_test:
@@ -29,6 +30,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/native-logo/
     - assets/images/
     - assets/icons/
   #   - images/a_dot_ham.jpeg
