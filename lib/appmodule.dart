@@ -6,11 +6,12 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child("/splash-screen", child: (context) => const SplashScreen());
-    r.child("/on-boarding", child: (context) => const OnBoardingScreen());
-    r.child("/auth/register", child: (context) => const RegisterScreen());
-    r.child("/auth/register/upload-pic", child: (context) => const RegisterUploadPicScreen());
-    r.child("/auth/register/upload-id", child: (context) => const RegisterUploadIdCardScreen());
+    r.child("/splash-screen", child: (context)            => const SplashScreen());
+    r.child("/on-boarding", child: (context)              => const OnBoardingScreen());
+    r.child("/auth/login", child: (context)               => const LoginScreen());
+    r.child("/auth/register", child: (context)            => const RegisterScreen());
+    r.child("/auth/register/upload-pic", child: (context) => RegisterUploadPicScreen(bioData: r.args.data), transition: TransitionType.size);
+    r.child("/auth/register/upload-id", child: (context)  => const RegisterUploadIdCardScreen());
     super.routes(r);
   }
 
@@ -20,5 +21,6 @@ class CoreModule extends Module {
   @override
   void exportedBinds(Injector i) {
     i.addSingleton<RegisterController>(RegisterController.new, config: BindConfig(onDispose: (s) => s.dispose()));
+    i.addSingleton<LoginController>(LoginController.new, config: BindConfig(onDispose: (s) => s.dispose()));
   }
 }

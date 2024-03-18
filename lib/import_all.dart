@@ -8,3 +8,4 @@ export "package:flutter_svg/flutter_svg.dart";
 export 'dart:async';
 export "onboarding/oboarding.dart";
 export "auth/register.dart";
+export "auth/login.dart";

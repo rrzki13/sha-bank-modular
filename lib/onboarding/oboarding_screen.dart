@@ -191,7 +191,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                       ),
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Modular.to.pushNamed("/auth/login");
+                                      },
                                       child: Container(
                                         margin: const EdgeInsets.only(
                                           top: 20,

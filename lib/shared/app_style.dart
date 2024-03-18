@@ -32,4 +32,9 @@ class AppStyle {
     color: AppColor(AppColor.colorWhite),
     fontSize: 12,
   );
+
+  static TextStyle primaryAccentStyle = mainFont.copyWith(
+    color: AppColor(AppColor.colorPrimaryAccent),
+    fontSize: 12,
+  );
 }

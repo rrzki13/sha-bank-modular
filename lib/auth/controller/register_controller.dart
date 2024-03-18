@@ -5,6 +5,6 @@ class RegisterController extends ChangeNotifier {
   TextEditingController fullNameController  = TextEditingController();
   TextEditingController passwordController  = TextEditingController();
   TextEditingController emailController     = TextEditingController();
-  TextEditingController pinController     = TextEditingController();
+  TextEditingController pinController       = TextEditingController();
 
 }

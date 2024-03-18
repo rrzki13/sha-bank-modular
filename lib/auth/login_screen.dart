@@ -1,28 +1,14 @@
-import "package:bank_sha_modular/import_all.dart";
+import 'package:bank_sha_modular/import_all.dart';
 
-class RegisterUploadPicScreen extends StatefulWidget {
-  final Map<String, String> bioData;
-
-  const RegisterUploadPicScreen({
-    super.key,
-    required this.bioData
-  });
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<RegisterUploadPicScreen> createState() => _RegisterUploadPicScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterUploadPicScreenState extends State<RegisterUploadPicScreen> {
-  final registerController = Modular.get<RegisterController>();
-
-  @override
-  void initState() {
-    // add value to controller
-    registerController.fullNameController.text  = widget.bioData["fullName"] ?? "";
-    registerController.emailController.text     = widget.bioData["email"] ?? "";
-    registerController.passwordController.text  = widget.bioData["password"] ?? "";
-    super.initState();
-  }
+class _LoginScreenState extends State<LoginScreen> {
+  final loginController = Modular.get<LoginController>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +31,7 @@ class _RegisterUploadPicScreenState extends State<RegisterUploadPicScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Join Us to Unlock\nYour Growth",
+                  "Sign In &\nGrow Your Finance",
                   style: AppStyle.darkText.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: 20,
@@ -62,41 +48,32 @@ class _RegisterUploadPicScreenState extends State<RegisterUploadPicScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(44),
-                        decoration: ShapeDecoration(
-                          shape: const CircleBorder(),
-                          color: AppColor(AppColor.colorWhiteBone)
-                        ),
-                        child: Center(
-                          child: SvgPicture.asset(
-                            "assets/icons/ic-upload.svg",
-                            width: 32,
-                            colorFilter: ColorFilter.mode(AppColor(AppColor.colorGrey), BlendMode.srcIn),
+                      CustomTextField(
+                        label: "Email Address",
+                        controller: loginController.emailController,
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      const SizedBox(height: 16),
+                      CustomTextField(
+                        label: "Password",
+                        controller: loginController.passwordController,
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 8),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "Forgot Password",
+                          style: AppStyle.primaryAccentStyle.copyWith(
+                            fontSize: 14
                           ),
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      Center(
-                        child: Text(
-                          widget.bioData["fullName"] ?? "",
-                          style: AppStyle.darkText.copyWith(fontSize: 18, fontWeight: FontWeight.w500),
-                        ),
-                      ),
                       const SizedBox(height: 30),
-                      CustomTextField(
-                        label: "Set PIN (6 digit number)",
-                        controller: registerController.pinController,
-                        obscureText: true,
-                        keyboardType: TextInputType.number,
-                      ),
-                      const SizedBox(height: 50),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Modular.to.pushNamed("/auth/register/upload-id");
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
@@ -113,7 +90,7 @@ class _RegisterUploadPicScreenState extends State<RegisterUploadPicScreen> {
                             ),
                           ),
                           child: Text(
-                            "Continue",
+                            "Sign In",
                             textAlign: TextAlign.center,
                             style: AppStyle.whiteText.copyWith(
                               fontSize: 18,
@@ -125,6 +102,23 @@ class _RegisterUploadPicScreenState extends State<RegisterUploadPicScreen> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 50),
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      Modular.to.pushNamed("/auth/register");
+                    },
+                    child: Text(
+                      "Create New Account",
+                      textAlign: TextAlign.center,
+                      style: AppStyle.greyText.copyWith(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 50),
               ],
             ),
           )

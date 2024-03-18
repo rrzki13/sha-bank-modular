@@ -69,7 +69,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Modular.to.pushNamed("/auth/register/upload-pic");
+                            Map<String, String> bioData = {
+                              "fullName": registerController.fullNameController.text.toString(),
+                              "email": registerController.emailController.text.toString(),
+                              "password": registerController.passwordController.text.toString(),
+                            };
+                            Modular.to.pushNamed("/auth/register/upload-pic", arguments: bioData);
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -102,7 +107,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 50),
                 Center(
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Modular.to.pushNamed("/auth/login");
+                    },
                     child: Text(
                       "Sign In",
                       textAlign: TextAlign.center,
