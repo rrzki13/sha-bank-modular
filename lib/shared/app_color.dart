@@ -23,5 +23,6 @@ class AppColor extends Color {
   static String colorWhite            = "#FFFFFF";
   static String colorWhiteBone        = "#F1F1F9";
   static String colorGrey             = "#A4A8AE";
+  static String colorGreen            = "#22B07D";
 
 }

@@ -73,7 +73,9 @@ class _RegisterUploadIdCardScreenState extends State<RegisterUploadIdCardScreen>
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Modular.to.navigate("/home/pin");
+                          },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(

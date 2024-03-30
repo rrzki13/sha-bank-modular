@@ -6,6 +6,7 @@ export 'package:responsive_framework/responsive_framework.dart';
 export "shared/shared.dart";
 export "package:flutter_svg/flutter_svg.dart";
 export 'dart:async';
-export "onboarding/oboarding.dart";
+export "onboarding/onboarding.dart";
 export "auth/register.dart";
 export "auth/login.dart";
+export "dashboard/dashboard.dart";

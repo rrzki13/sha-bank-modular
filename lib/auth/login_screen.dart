@@ -73,7 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Modular.to.navigate("/home/pin");
+                          },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
@@ -106,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Center(
                   child: InkWell(
                     onTap: () {
-                      Modular.to.pushNamed("/auth/register");
+                      Modular.to.navigate("/auth/register");
                     },
                     child: Text(
                       "Create New Account",

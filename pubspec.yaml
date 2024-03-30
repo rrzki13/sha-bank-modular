@@ -21,6 +21,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   carousel_slider: ^4.2.1
   flutter_native_splash: ^2.3.11
+  onesignal_flutter: ^3.2.7
 
 dev_dependencies:
   flutter_test:
@@ -33,7 +34,8 @@ flutter:
     - assets/native-logo/
     - assets/images/
     - assets/icons/
-  #   - images/a_dot_ham.jpeg
+    - assets/users/
+    - assets/tips/
 
   # fonts:
   #   - family: Schyler

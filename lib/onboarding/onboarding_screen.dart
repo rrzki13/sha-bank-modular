@@ -29,6 +29,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    Strings.initPlatformState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor(AppColor.colorWhiteBone),
@@ -168,7 +174,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                       width: double.infinity,
                                       child: InkWell(
                                         onTap: () {
-                                          Modular.to.pushNamed("/auth/register");
+                                          Modular.to.navigate("/auth/register");
                                         },
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(
@@ -192,7 +198,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        Modular.to.pushNamed("/auth/login");
+                                        Modular.to.navigate("/auth/login");
                                       },
                                       child: Container(
                                         margin: const EdgeInsets.only(

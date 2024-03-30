@@ -74,7 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               "email": registerController.emailController.text.toString(),
                               "password": registerController.passwordController.text.toString(),
                             };
-                            Modular.to.pushNamed("/auth/register/upload-pic", arguments: bioData);
+                            Modular.to.navigate("/auth/register/upload-pic", arguments: bioData);
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -108,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Center(
                   child: InkWell(
                     onTap: () {
-                      Modular.to.pushNamed("/auth/login");
+                      Modular.to.navigate("/auth/login");
                     },
                     child: Text(
                       "Sign In",

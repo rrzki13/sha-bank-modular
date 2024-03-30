@@ -37,4 +37,19 @@ class AppStyle {
     color: AppColor(AppColor.colorPrimaryAccent),
     fontSize: 12,
   );
+
+  static TextStyle normalStyle =
+      mainFont.copyWith(color: AppColor("696B76"), fontSize: 12);
+
+  static TextStyle cardTextStyle = mainFont.copyWith(
+      color: AppColor(AppColor.colorWhite),
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle greenTextStyle = mainFont.copyWith(
+    color: AppColor(AppColor.colorGreen),
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+  );
 }
