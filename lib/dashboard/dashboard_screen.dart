@@ -8,15 +8,18 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  final dashboardController = Modular.get<DashboardController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor("#F6F8FB"),
       extendBodyBehindAppBar: false,
-      body: const IndexedStack(
-        index: 0,
-        children: [
-          HomeScreen()
+      body: IndexedStack(
+        index: dashboardController.activePage,
+        children: const [
+          HomeScreen(),
+          HistoryScreen()
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -32,20 +35,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
           selectedLabelStyle: AppStyle.primaryAccentStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 10),
           unselectedLabelStyle: AppStyle.darkText.copyWith(fontWeight: FontWeight.w500, fontSize: 10),
           showUnselectedLabels: true,
+          onTap: onItemTapped,
+          elevation: 0.0,
+          useLegacyColorScheme: false,
+          currentIndex: dashboardController.activePage,
           items: [
             BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/ic-overview.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorPrimaryAccent), BlendMode.srcIn)),
+              activeIcon: SvgPicture.asset("assets/icons/ic-overview.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorPrimaryAccent), BlendMode.srcIn)),
+              icon: SvgPicture.asset("assets/icons/ic-overview.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorDark), BlendMode.srcIn)),
               label: "Overview",
             ),
             BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset("assets/icons/ic-history.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorPrimaryAccent), BlendMode.srcIn)),
               icon: SvgPicture.asset("assets/icons/ic-history.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorDark), BlendMode.srcIn)),
               label: "History",
             ),
             BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset("assets/icons/ic-statistic.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorPrimaryAccent), BlendMode.srcIn)),
               icon: SvgPicture.asset("assets/icons/ic-statistic.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorDark), BlendMode.srcIn)),
               label: "Statistic",
             ),
             BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset("assets/icons/ic-reward.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorPrimaryAccent), BlendMode.srcIn)),
               icon: SvgPicture.asset("assets/icons/ic-reward.svg", colorFilter: ColorFilter.mode(AppColor(AppColor.colorDark), BlendMode.srcIn)),
               label: "Reward",
             ),
@@ -67,6 +78,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+  }
+
+  void onItemTapped(int index) {
+    setState(() {
+      dashboardController.onChangePage(index);
+    });
   }
 }
 

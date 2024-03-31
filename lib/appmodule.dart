@@ -26,5 +26,6 @@ class CoreModule extends Module {
     i.addSingleton<RegisterController>(RegisterController.new, config: BindConfig(onDispose: (s) => s.dispose()));
     i.addSingleton<LoginController>(LoginController.new, config: BindConfig(onDispose: (s) => s.dispose()));
     i.addSingleton<PinController>(PinController.new, config: BindConfig(onDispose: (s) => s.dispose()));
+    i.addSingleton<DashboardController>(DashboardController.new, config: BindConfig(onDispose: (s) => s.dispose()));
   }
 }

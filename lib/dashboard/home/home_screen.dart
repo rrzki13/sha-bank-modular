@@ -167,7 +167,7 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  CardLatestTransaction(
+                  buildTransactionItem(
                     icon: "assets/icons/ic-download.svg",
                     color: AppColor("#3197DD"),
                     accentColor: AppColor("#E7F5FD"),
@@ -176,7 +176,7 @@ class HomeScreen extends StatelessWidget {
                     ledger: "+ 450.000",
                   ),
                   const SizedBox(height: 18),
-                  CardLatestTransaction(
+                  buildTransactionItem(
                     icon: "assets/icons/ic-reward.svg",
                     color: AppColor("#A02FBD"),
                     accentColor: AppColor("#F5E8F9"),
@@ -185,7 +185,7 @@ class HomeScreen extends StatelessWidget {
                     ledger: "+ 22.000",
                   ),
                   const SizedBox(height: 18),
-                  CardLatestTransaction(
+                  buildTransactionItem(
                     icon: "assets/icons/ic-upload.svg",
                     color: AppColor("#2EA368"),
                     accentColor: AppColor("#E5F7EE"),
@@ -194,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                     ledger: "- 5.000",
                   ),
                   const SizedBox(height: 18),
-                  CardLatestTransaction(
+                  buildTransactionItem(
                     icon: "assets/icons/ic-repeat.svg",
                     color: AppColor("#5142E6"),
                     accentColor: AppColor("#EDEBFF"),
@@ -203,7 +203,7 @@ class HomeScreen extends StatelessWidget {
                     ledger: "- 150.000",
                   ),
                   const SizedBox(height: 18),
-                  CardLatestTransaction(
+                  buildTransactionItem(
                     icon: "assets/icons/ic-shopping-cart.svg",
                     color: AppColor("#F87000"),
                     accentColor: AppColor("#FEF0DF"),
@@ -288,67 +288,15 @@ class HomeScreen extends StatelessWidget {
         )
     );
   }
-}
 
-class CardAction extends StatelessWidget {
-  final String icon;
-  final String label;
-  const CardAction({super.key, required this.icon, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: (MediaQuery.of(context).size.width - 96) / 4,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: AppColor(AppColor.colorWhite)
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                icon,
-                height: 24,
-                colorFilter: ColorFilter.mode(AppColor(AppColor.colorDark), BlendMode.srcIn),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-              label,
-              textAlign: TextAlign.center,
-              style: AppStyle.darkText.copyWith(fontSize: 14, fontWeight: FontWeight.w600)
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class CardLatestTransaction extends StatelessWidget {
-  final String icon;
-  final Color color;
-  final Color accentColor;
-  final String label;
-  final String time;
-  final String ledger;
-
-  const CardLatestTransaction({
-    super.key,
-    required this.icon,
-    required this.color,
-    required this.accentColor,
-    required this.label,
-    required this.time,
-    required this.ledger,
-  });
-
-  @override
-  Widget build(BuildContext context) {
+  Widget buildTransactionItem({
+    required String icon,
+    required Color color,
+    required Color accentColor,
+    required String label,
+    required String time,
+    required String ledger
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -388,6 +336,45 @@ class CardLatestTransaction extends StatelessWidget {
             fontWeight: FontWeight.w600
         ))
       ],
+    );
+  }
+}
+
+class CardAction extends StatelessWidget {
+  final String icon;
+  final String label;
+  const CardAction({super.key, required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: (MediaQuery.of(context).size.width - 96) / 4,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(22),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColor(AppColor.colorWhite)
+            ),
+            child: Center(
+              child: SvgPicture.asset(
+                icon,
+                height: 24,
+                colorFilter: ColorFilter.mode(AppColor(AppColor.colorDark), BlendMode.srcIn),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+              label,
+              textAlign: TextAlign.center,
+              style: AppStyle.darkText.copyWith(fontSize: 14, fontWeight: FontWeight.w600)
+          )
+        ],
+      ),
     );
   }
 }
