@@ -6,7 +6,9 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor("#F6F8FB"),
       appBar: AppBar(
+        backgroundColor: AppColor(AppColor.colorWhite),
         title: Text("History", style: AppStyle.darkText.copyWith(fontSize: 20, fontWeight: FontWeight.w600)),
         centerTitle: true,
         actions: [

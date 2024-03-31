@@ -15,6 +15,7 @@ class AppModule extends Module {
 
     r.child("/home/pin", child: (context)                 => const PinScreen());
     r.child("/home", child: (context)                     => const DashboardScreen());
+    r.child("/home/transfer", child: (context)            => const TransferScreen());
     super.routes(r);
   }
 
@@ -27,5 +28,6 @@ class CoreModule extends Module {
     i.addSingleton<LoginController>(LoginController.new, config: BindConfig(onDispose: (s) => s.dispose()));
     i.addSingleton<PinController>(PinController.new, config: BindConfig(onDispose: (s) => s.dispose()));
     i.addSingleton<DashboardController>(DashboardController.new, config: BindConfig(onDispose: (s) => s.dispose()));
+    i.addSingleton<TransferController>(TransferController.new, config: BindConfig(onDispose: (s) => s.dispose()));
   }
 }

@@ -140,15 +140,17 @@ class HomeScreen extends StatelessWidget {
                 child: Text("Do Something", style: AppStyle.darkText.copyWith(fontSize: 16, fontWeight: FontWeight.w600))
             ),
             const SizedBox(height: 15),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Wrap(
                 spacing: 16,
                 children: [
-                  CardAction(icon: "assets/icons/ic-download.svg", label: "Top Up"),
-                  CardAction(icon: "assets/icons/ic-repeat.svg", label: "Send"),
-                  CardAction(icon: "assets/icons/ic-upload.svg", label: "Withdraw"),
-                  CardAction(icon: "assets/icons/ic-grid.svg", label: "More"),
+                  const CardAction(icon: "assets/icons/ic-download.svg", label: "Top Up"),
+                  CardAction(icon: "assets/icons/ic-repeat.svg", label: "Send", onTap: () {
+                   Modular.to.pushNamed("/home/transfer");
+                  }),
+                  const CardAction(icon: "assets/icons/ic-upload.svg", label: "Withdraw"),
+                  const CardAction(icon: "assets/icons/ic-grid.svg", label: "More"),
                 ],
               ),
             ),
@@ -343,37 +345,41 @@ class HomeScreen extends StatelessWidget {
 class CardAction extends StatelessWidget {
   final String icon;
   final String label;
-  const CardAction({super.key, required this.icon, required this.label});
+  final void Function()? onTap;
+  const CardAction({super.key, required this.icon, required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: (MediaQuery.of(context).size.width - 96) / 4,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: AppColor(AppColor.colorWhite)
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                icon,
-                height: 24,
-                colorFilter: ColorFilter.mode(AppColor(AppColor.colorDark), BlendMode.srcIn),
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(22),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: AppColor(AppColor.colorWhite)
+              ),
+              child: Center(
+                child: SvgPicture.asset(
+                  icon,
+                  height: 24,
+                  colorFilter: ColorFilter.mode(AppColor(AppColor.colorDark), BlendMode.srcIn),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-              label,
-              textAlign: TextAlign.center,
-              style: AppStyle.darkText.copyWith(fontSize: 14, fontWeight: FontWeight.w600)
-          )
-        ],
+            const SizedBox(height: 8),
+            Text(
+                label,
+                textAlign: TextAlign.center,
+                style: AppStyle.darkText.copyWith(fontSize: 14, fontWeight: FontWeight.w600)
+            )
+          ],
+        ),
       ),
     );
   }
